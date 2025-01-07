@@ -108,39 +108,38 @@ let students = fs.readFileSync("./Data/students.txt", "utf-8").split(/\r?\n/)
 Lire le fichier lui-même et mettez chaque nom en majuscule */
 
 
-// Tableau tampon pour stocker temporairement les étudiants avant manipulation
+// Tableau tampon pour stocker temporairement les étudiants
 let tempArray = [];
-let newArrayStudents = ["\n", "18 Sonia Paris", "\n", "17 Clarisse Marseille"]
+let newArrayStudents = ["\n", "18 Sonia Paris", "\n", "17 Clarisse Marseille"];
 
 let str = "";
+
 for (let student of newArrayStudents) {
-
     try {
-        // Pour ajouter dans le fichier
+        // Ajouter chaque étudiant au fichier
+        fs.appendFileSync("./Data/students.txt", student);
 
-        fs.appendFileSync("./Data/students.txt", student)
+        // Lire le contenu actuel du fichier
+        tempArray = fs.readFileSync("./Data/students.txt", "utf-8").split(/\r?\n/);
 
-        tempArray = fs.readFileSync("./Data/students.txt", "utf-8").split(/\r?\n/)
+        str = "";
 
         for (let line of tempArray) {
 
-            // Permet de séparer par colonnes (Note, Nom et Adresse)
-            const [note, name, address] = line.split(" ")
+            if (line.trim() === "") continue;
 
-            // Gestion de l'en-tête
-            if (name !== "Name") {
-                str += `${note} ${name.toUpperCase()} ${address} \n`
-                continue;
+            // Séparer les colonnes (Note, Nom et Adresse)
+            const [note, name, address] = line.split(" ");
+
+            // Transformer les noms en majuscules
+            if (note) {
+                str += `${note} ${name.toUpperCase()} ${address}\n`;
             }
-
-            str += `${note} ${name} ${address} \n`
-
         }
-        console.log(str);
+
+
+        fs.writeFileSync("./Data/students.txt", str);
     } catch (err) {
-        console.error(err)
+        console.error(err);
     }
-
 }
-
-
