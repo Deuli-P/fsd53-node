@@ -1,4 +1,6 @@
 const u = require("./utils");
-const http = require("http")
+require("dotenv").config();
 
-console.log(u.name);
+
+
+console.log(process.env.API_KEY);
