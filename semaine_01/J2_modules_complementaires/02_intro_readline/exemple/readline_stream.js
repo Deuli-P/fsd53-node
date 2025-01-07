@@ -4,7 +4,7 @@ const readline = require("readline");
 
 const rl = readline.createInterface({
     input: process.stdin,
-    outpout: process.stdout
+    output: process.stdout
 })
 
 // rl.question("How are you today ?", (answer) => {
@@ -15,7 +15,7 @@ const rl = readline.createInterface({
 
 // })
 
-rl.setPrompt("SAM >")
+rl.setPrompt("SAM > ")
 rl.prompt();
 
 // Pour capturer les événements de la console
@@ -31,7 +31,7 @@ rl.on("line", (line) => {
     rl.prompt()
 }).on("close", () =>{
 console.log("Sayonara !");
-// process.exit(0)
-rl.close()
+process.exit(0)
+// rl.close()
 
 })
