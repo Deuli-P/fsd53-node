@@ -1,0 +1,15 @@
+extends layout.pug
+
+block title
+    title Products
+
+block styles
+    link(rel="stylesheet" href="/products.css")
+block content
+    h1 Je suis sur la pages des produits
+
+    - const products = ["Pain", "Farine", "Sucre"," Eau"]
+
+        ul
+            each p in products
+              li #{p}

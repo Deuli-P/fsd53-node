@@ -28,7 +28,7 @@ const server = http.createServer((req, res) => {
 
     }
     try {
-        const compileTemplate = pug.compileFile("./views/demo.pug")
+        const compileTemplate = pug.compileFile("./views/contact.pug")
         const result = compileTemplate(data)
         res.writeHead(200, { "Content-Type": "text/html" })
         res.end(result)
