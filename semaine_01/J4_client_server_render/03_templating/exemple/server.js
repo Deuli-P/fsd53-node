@@ -19,16 +19,24 @@ const server = http.createServer((req, res) => {
     // const result = compileTemplate({age: 9})
 
     // Quand on a un fichier .pug pour le compiler
-    // try {
-    //     const compileTemplate = pug.compileFile("./views/template.pug")
-    //     const result = compileTemplate({ age: 9 })
-    //     res.writeHead(200, { "Content-Type": "text/html" })
-    //     res.end(result)
-    // } catch (err) {
-    //     res.writeHead(500, { "Content-Type": "text/plain" })
-    //     res.end(err.message)
 
-    // }
+    const data = {
+        name: "Seyedpouya",
+        age: 59,
+        gender: "M",
+        isAdmin: false,
+
+    }
+    try {
+        const compileTemplate = pug.compileFile("./views/demo.pug")
+        const result = compileTemplate(data)
+        res.writeHead(200, { "Content-Type": "text/html" })
+        res.end(result)
+    } catch (err) {
+        res.writeHead(500, { "Content-Type": "text/plain" })
+        res.end(err.message)
+
+    }
 
 
 

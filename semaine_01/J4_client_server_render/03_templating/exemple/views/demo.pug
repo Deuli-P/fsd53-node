@@ -1,0 +1,90 @@
+//- nav
+//-     ul
+//-         li
+//-             a(href="/home") Home
+//-         li
+//-             a(href="/portolio") Portfolio
+//-         li
+//-             a(href="/contact") Contact
+
+//- //- Tags imbriqués
+//- nav: ul
+//-     li: a(href="/home") Home
+//-     li: a(href="/portfolio") Portfolio
+//-     li: a(href="/contact") Contact
+
+//- //- Attributs
+
+//- input(type="radio" name="gender" value="Female")
+
+//- //- Sur plusieurs lignes
+//- input(
+//-     type="radio"
+//-     name="gender"
+//-     value="Male"
+//-     checked
+//- )
+
+//- header#header-mobile
+//-     article
+//-         .article-content
+//-             p.
+//-                 J'écris le contenu de mon <strong>article</strong> ici, c'est trop bien!
+//-                 Je pense qu'écrire du HTML à la "main" dans le JS c'est long.
+
+//-             //- Le  p. signifie que c'est un bloc "p" sur plusieurs lignes
+
+
+
+//- Interpolation
+h1 Salut #{name}
+p Tu as #{age} ans et tu es #{gender}
+p Es-tu admin ? #{isAdmin}
+
+h1 Salut #{name}
+    p Tu as:
+        span= age
+
+//- Pour écrire du JS directement dans un fichier .pug
+article
+    -
+        const post = {title: "PUG", author: "Node", date: new Date()}
+        const { title, author, date} = post
+
+    h1 #{title}
+    p L'auteur est #{author}
+    p Sorti le #{date.toLocaleDateString()}
+
+
+//- Si vous voulez écrire du JS qui sera interprété coté client on appellela balise script et on met un point "."
+
+input(type="text" id="message")
+span#name
+
+script.
+    const messageInput = document.getElementById("message");
+    const span = document.getElementById("name");
+    messageInput.oninput = function (e) {
+        span.innerText = e.target.value
+    }
+
+
+//- Conditions et commentaires
+
+if !isAdmin
+   p Veuillez vous connecter avec un compte administrateur
+else
+     p Bonjour, veux-tu accéder à ton panneau d'administration
+
+//- Switch fonctionne avec des case/when
+case gender
+    when 'M'
+        p Tu es un homme
+    when 'F'
+        p Tu es une femme
+    default
+        p C'est un autre genre
+
+// Commentaire qui s'afficher dans le DOM
+//- Commentaire qui ne s'affiche pas dans le DOM
+<!-- Commentaire !-->
