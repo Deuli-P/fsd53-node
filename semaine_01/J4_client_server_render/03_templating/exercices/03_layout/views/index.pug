@@ -1,0 +1,22 @@
+extends layout.pug
+
+block title
+     title Portfolio
+
+block content
+    .container
+    h1 Jean DUPONT
+    p Bienvenue sur mon portfolio
+    p Contactez-moi à l'adresse suivante:
+    ouput#generate-email
+
+block scripts
+    script.
+        (function preventSpam(){
+            const b64encodedEmail = 'amVhbi5kdXBvbnRAZ21haWwuY29t';
+            //- Pour générer une chaine de caractère en base 64
+            //- const encodedMail = btoa("jean@dupont.com")
+            //- console.log(encodedMail) /!\CA S'EXECUTE DANS LA CONSOLE DU NAVIGATEUR
+            document.getElementById('generate-email').textContent = atob(b64encodedEmail);
+            //- ASCII to binary
+        })();
