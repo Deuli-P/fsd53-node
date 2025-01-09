@@ -88,3 +88,46 @@ case gender
 // Commentaire qui s'afficher dans le DOM
 //- Commentaire qui ne s'affiche pas dans le DOM
 <!-- Commentaire !-->
+
+//- Boucles
+-
+    const users = ["Armance", "Quentin", "Laura", "Seyedpouya", "Sibli"]
+    const admins = new Set(["Bocar", "Roger", "Véronique"])
+
+    // Symbole.iterator
+ul#users
+    each user in users
+        li #{user}
+
+ul#admins
+    - for (const admin of admins)
+        li #{admin}
+
+- let i = 1
+
+while i <= 10
+    div #{i}
+
+    - i++
+
+
+//- Mixins
+//-  Pour appeler un mixin, j'utilise +[Nom]
+mixin menuItem
+    li: a(href="#") Menu Item
+    p Bonjour, comment allez-vous ?
+ul
+    +menuItem
+    +menuItem
+    +menuItem
+
+//- Les mixins peuvent prendre des arguments
+
+mixin addProduct(name, price)
+    li Voici votre nouveau produit:  #{name} qui coute #{price} EUR
+
+
+ul
+    +addProduct("Chaise", 10)
+    +addProduct("Tabouret", 2)
+    +addProduct("Rideaux", 500)
