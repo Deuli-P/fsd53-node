@@ -1,0 +1,1 @@
+// Démo syntaxe, veuillez utiliser la syntaxe camelCase
