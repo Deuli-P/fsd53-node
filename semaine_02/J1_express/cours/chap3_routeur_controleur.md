@@ -144,9 +144,9 @@ Reprenez le projet précédent `/03_kittens/` et refactorez-le de telle sorte à
 ```
 03_kittens/
 ├── routers/
-│   └── kittens.js
+│   └── kittensRouter.js
 ├── controllers/
-│   └── kittens.js
+│   └── kittensController.js
 ├── data_kittens/…
 ├── public/…
 ├── server.js

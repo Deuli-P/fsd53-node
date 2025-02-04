@@ -1,17 +1,14 @@
 import { Router } from "express";
-import express from "express" // => express.Router();
+import { contactPage, homePage } from "../controllers/homeController.js";
+// import express from "express" // => express.Router();
 
 const router = Router();
 
 // Page d'accueil
-router.get("/", (req, res) => {
-    res.status(200).send("Welcome Home")
-})
+router.get("/",homePage )
 
 // Page contact
-router.get("/contact", (req, res)=> {
-    res.status(200).send("Welcome to our contact page")
-})
+router.get("/contact", contactPage)
 
 
 export default router;
