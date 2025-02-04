@@ -198,7 +198,6 @@ export const addKitten = (req, res) => {
         return res.redirect(`/add?error=${encodeURIComponent(errorMessage)}`)
     }
 
-
     // FIN SECURITE DES INPUTS
 
     // On va lire le fichier "kittens.json"
