@@ -21,10 +21,17 @@
         "description": "super cat"
     },
     {
-        "id": 4,
-        "name": "azeaz",
-        "image": "445",
-        "age": 4,
-        "description": "sdfsd"
+        "id": 6,
+        "name": "Newton",
+        "image": "https://picsum.photos/100",
+        "age": 7,
+        "description": "Awesome kitten"
+    },
+    {
+        "id": 7,
+        "name": "Solis",
+        "image": "https://picsum.photos/400",
+        "age": 8,
+        "description": "It's me"
     }
 ]

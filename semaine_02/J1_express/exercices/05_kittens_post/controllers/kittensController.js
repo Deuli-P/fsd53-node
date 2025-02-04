@@ -15,10 +15,12 @@ export const home = (req, res) => {
     for (const { id, name, image } of kittens) {
         //Le fait de décomposer directement dans la boucle for, m'évite de faire:
         // kitten.id; kitten.name; kitten.image
+
+        const kittenImage = image.startsWith("http") ? image :`/images/${image}`
         kittensHTML += `
 
     <div class="kitten">
-    <img src="/images/${image}" alt="Photo de ${name}" />
+    <img src="${kittenImage}" alt="Photo de ${name}" />
     <a href="/kitten/${id}">${name} </a>
     </div>
 
@@ -93,7 +95,7 @@ export const getOneKitten = (req, res) => {
     const kitten = JSON.parse(readFileSync(fileToRead, "utf-8"));
 
     const { name, image, description, age } = kitten;
-
+     const kittenImage = image.startsWith("http") ? image :`/images/${image}`
     res.status(200).send(`
         <!DOCTYPE html>
         <html>
@@ -116,7 +118,7 @@ export const getOneKitten = (req, res) => {
                         <h2>${name}</h2>
                         <p>Age: ${age} ans </p>
                         <p>${description} </p>
-                        <img src="/images/${image}" alt="Photo de ${name}"
+                        <img src="${kittenImage}" alt="Photo de ${name}"
                     </article>
                 </div>
             </body>
@@ -127,7 +129,10 @@ export const getOneKitten = (req, res) => {
 
 export const formKitten = (req, res) => {
 
+    // Récupération d'une possible erreur dans l'URL
+    // exemple: http://localhost:8000/add?error="message d'erreur"
 
+    const { error } = req.query;
 
     res.status(200).send(`
         <!DOCTYPE html>
@@ -147,6 +152,7 @@ export const formKitten = (req, res) => {
                         </ul>
                     </nav>
                 </div>
+                ${(error && error.trim() !== "") ? `<div class="container error">${decodeURIComponent(error)}</div> ` : ''}
                 <div class="container">
                     <form action="/add" method="POST">
                     Nom: <input type="text" name="name" placeholder="Newton" /><br />
@@ -168,6 +174,30 @@ export const addKitten = (req, res) => {
     const { name, age, image, description } = req.body;
 
     // SECURITE INPUTS
+
+    if (
+        name.trim() === "" ||
+        image.trim() === "" ||
+        description.trim() === "" ||
+        age.trim() === ""
+    ) {
+
+        const errorMessage = "Tous les champs sont obligatoires !"
+        return res.redirect(`/add?error=${encodeURIComponent(errorMessage)}`)
+    }
+
+    if (isNaN(parseInt(age)) || parseInt(age) < 0) {
+        const errorMessage = "L'âge renseigné n'est pas valide !"
+        return res.redirect(`/add?error=${encodeURIComponent(errorMessage)}`)
+    }
+
+
+    // Si l'URL de l'image ne commence pas par "https://picsum.photos" alors on génère une erreur
+    if(!image.startsWith("https://picsum.photos")){
+        const errorMessage = "La photo doit venir du service Picsum"
+        return res.redirect(`/add?error=${encodeURIComponent(errorMessage)}`)
+    }
+
 
     // FIN SECURITE DES INPUTS
 

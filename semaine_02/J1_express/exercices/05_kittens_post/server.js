@@ -14,7 +14,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use(kittensRouter)
+app.get("/*", (req, res) => {
 
+    res.status(404).send("Page introuvable, merci de revenir à l'accueil");
+})
 
 app.listen(8000, () => {
 
