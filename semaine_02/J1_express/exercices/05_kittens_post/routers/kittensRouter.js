@@ -13,7 +13,7 @@ kittensRouter.get("/kitten/:id/user", getOneKitten )
 
 // ROUTE : Afficher UN seul chaton
 // =======================
-kittensRouter.get("/kitten/:id", getOneKitten )
+kittensRouter.get("/kitten/:id",  getOneKitten )
 
 // ROUTE : Afficher le formulaire d'ajout de chaton
 // =======================

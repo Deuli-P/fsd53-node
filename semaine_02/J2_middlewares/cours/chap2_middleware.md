@@ -146,7 +146,7 @@ Vous devez dans cet exercice créer 2 fonctions middleware :
 
 Démonstration du résultat attendu :
 
-![](./images/01_logger.gif)
+![](../images/01_logger.gif)
 
 Créez un fichier `./middlewares.js` à la racine qui exportera vos 2 fonctions. Les fonctions devront être importées et utilisées comme middlewares dans `server.js`
 
