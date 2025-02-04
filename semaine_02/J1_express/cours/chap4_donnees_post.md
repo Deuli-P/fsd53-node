@@ -39,7 +39,7 @@ On l'utilise comme suit :
 //                |
 //                |
 //                V
-app.use(express.urlencoded({ extended: false })); // (extrait les données et construit `req.body`)
+app.use(express.urlencoded({ extended: true })); // (extrait les données et construit `req.body`)
 //                |
 //                |
 //                V
