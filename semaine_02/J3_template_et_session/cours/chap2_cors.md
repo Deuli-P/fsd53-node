@@ -2,7 +2,7 @@
 
 Nous allons expliciter la problématique CORS.
 
-![cors](cors.png)
+![cors](../images/cors.png)
 
 ## 01 Example mise en oeuvre du problème
 
