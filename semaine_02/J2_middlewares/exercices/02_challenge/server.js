@@ -4,6 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 import route from "./routes/routes.js";
+import session from "express-session";
 
 // ==========
 // App initialization
@@ -16,12 +17,21 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
+
+
 // ==========
 // App middlewares
 // ==========
+app.use(session({
+name: "auth",
+secret: "mysupersecret",
+resave: false,
+saveUninitialized: true
+}))
 
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use(express.json());
+app.use(express.urlencoded({extended: true}))
 // ==========
 // App routers
 // ==========
