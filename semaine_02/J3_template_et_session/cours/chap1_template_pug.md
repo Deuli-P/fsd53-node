@@ -131,5 +131,5 @@ const posts = [
 
 - Wireframe :
 
-![posts](./post.png)
+![posts](../images/post.png)
 
