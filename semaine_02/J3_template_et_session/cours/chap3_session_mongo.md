@@ -33,7 +33,7 @@ Vous pouvez maintenant, utiliser les sessions classiquement dans votre code :
 ```js
 
 app.get('/login', (req, res) => {
-  req.session.auth = true;
+  req.session.isLogged = true;
 })
 ```
 
