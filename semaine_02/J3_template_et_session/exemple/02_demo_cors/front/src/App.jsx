@@ -11,7 +11,7 @@ function App() {
 
     const fetchData = async () => {
 
-      const res = await fetch("http://localhost:8000");
+      const res = await fetch("http://localhost:8000", {Authorization: "token"});
 
       if (!res.ok) {
         console.log("error");
