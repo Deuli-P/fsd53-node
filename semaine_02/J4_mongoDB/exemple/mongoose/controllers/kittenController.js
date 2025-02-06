@@ -1,11 +1,11 @@
-import KittenModel from "../models/KittenModel.js"
+import KittenModel from "../models/KittenModel.js";
 
 export const getAllKittens = async (req, res) =>{
 
 try {
 
     // Je vais aller interoger ma BDD pour récupérer tous les chatons
-const kittens = await KittenModel.find()
+const kittens = await KittenModel.find({}, {_id:0, name: 1}).sort({createdAt: -1}).limit(2).skip(1) //  -1 DESC ; 1 ASC
 
 res.status(200).json(kittens)
 
