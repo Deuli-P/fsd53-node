@@ -62,3 +62,9 @@ const KittenSchemaV2 = new mongoose.Schema({
 }, {
 timestamps: true, // Créé 3 nouveaux champs: createdAt; updatedAt; __v;
 })
+
+// Convertir le schéma en modele (Classe)
+const KittenModel = mongoose.model("Kitten", KittenSchemaV2) // Merci de ne pas rajouter un "s" à la fin de votre collection il le fait tout seul
+
+
+export default KittenModel;
