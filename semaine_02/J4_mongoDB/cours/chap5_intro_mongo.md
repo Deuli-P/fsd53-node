@@ -43,7 +43,7 @@ Ci-dessous un exemple représentant une collection de 2 documents :
       "notes": [14, 17, 19, 20],
       "relationship": null
     },
-    
+
     // Document 2
     {
       "_id": 2,
@@ -247,9 +247,9 @@ Une fonction `async` retourner TOUJOURS une promesse. On peut donc la chaîner a
 ```js
 async function process() {
     let sum = 0;
-    const res1 = await add(1); 
+    const res1 = await add(1);
     sum += res1;
-    const res2 = await add(2); 
+    const res2 = await add(2);
     sum += res2;
 
     return sum;
@@ -262,12 +262,12 @@ process()
 
 ### Exercice anim
 
-Soit la Promesse `anim()`, elle retournera une valeur aléatoire composée d'un chiffre de 1 à 9 et d'une lettre comprise entre A et X. 
+Soit la Promesse `anim()`, elle retournera une valeur aléatoire composée d'un chiffre de 1 à 9 et d'une lettre comprise entre A et X.
 
 Exécutez 10 fois ce générateur pour construire une chaîne aléatoire en utilisant la technique async/await décrite ci-dessus.
 
 
-### Exercice axios 
+### Exercice axios
 
 Nous allons utiliser axios dans un fichier JS en installant un module Node :
 
@@ -443,12 +443,12 @@ Voici un exemple de document produit :
 
 ```js
 {
-    sale : true, 
+    sale : true,
     price : 0.99,
-    society : "Alex", 
+    society : "Alex",
     qty: 19,
     size: { h: 11, w: 29, uom: "cm" },
-    year : "2019-08-01"  
+    year : "2019-08-01"
 };
 ```
 
@@ -577,7 +577,7 @@ await ProductModel
     .sort({ qty : -1 }); // Par ordre de quantité décroissant
 ```
 
-## Mise à jour 
+## Mise à jour
 
 Les méthodes de modification vous permettent facilement de mettre à jour les documents :
 
